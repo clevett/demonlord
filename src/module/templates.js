@@ -21,7 +21,6 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/demonlord/templates/tabs/talents.hbs',
     'systems/demonlord/templates/chat/challenge.hbs',
     'systems/demonlord/templates/chat/combat.hbs',
-    'systems/demonlord/templates/chat/corruption.hbs',
     'systems/demonlord/templates/chat/damage.hbs',
     'systems/demonlord/templates/chat/description.hbs',
     'systems/demonlord/templates/chat/heal.hbs',
