@@ -273,6 +273,8 @@ async rollInitiativeGroup(ids, { formula = null, updateTurn = true, messageOptio
 
   /** @override */
   async nextTurn() {
+    const combatant = game.combat.combatants.get(game.combat.current.combatantId)
+    if (combatant) combatant.setFlag('demonlord', 'hasActed', true)
     const _updatedTurn = await super.nextTurn()
     await this._handleTurnEffects()
     await this.allowTurnOrderChangeInTurns(_updatedTurn)
@@ -296,6 +298,9 @@ async rollInitiativeGroup(ids, { formula = null, updateTurn = true, messageOptio
                 rollMode: CONST.DICE_ROLL_MODES.PRIVATE
             }
         })
+    }
+    for (let combatant of game.combat.combatants) {
+      await combatant.setFlag('demonlord', 'hasActed', false)
     }
     const _updatedRound = await super.nextRound()
     await this._handleTurnEffects()
